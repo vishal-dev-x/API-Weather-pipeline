@@ -29,4 +29,4 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           WEATHER_API: ${{ secrets.WEATHER_API }}
-        run: python main_file.py
+        run: python Main_script.py
