@@ -4,4 +4,4 @@ python-dotenv
 pytz
 ssl
 smtplib
-email
+email.messege
