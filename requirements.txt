@@ -2,6 +2,3 @@ requests
 supabase
 python-dotenv
 pytz
-ssl
-smtplib
-email.messege
