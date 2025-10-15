@@ -22,21 +22,24 @@ cities = [
 
 def insert_weather_condition(weather_id, climate, description, cloud):
    
-    res = supabase.table("weather_condition").select("*") \
-        .eq("weather_id",weather_id)\
-        .eq("climate", climate) \
-        .eq("climate_condition", description) \
-        .eq("cloudiness", cloud) \
-        .execute()
+    res = supabase.table("weather_condition").select("weather_id") \
+        .eq("climate", climate) .eq("climate_condition", description) .execute()
     
-    if not res.data:
+    if res:
         supabase.table("weather_condition").upsert({
             "weather_id": weather_id,
             "climate": climate,
             "climate_condition": description,
             "cloudiness": cloud
         }).execute()
-        
+    else:
+        supabase.table("weather_condition").insert({
+            "weather_id": weather_id,
+            "climate": climate,
+            "climate_condition": description,
+            "cloudiness": cloud
+        }).execute()
+                 
 ist = pytz.timezone('Asia/Kolkata')
 
 def insert_weather_record(city_id, weather_id, city_name, temp, feels_like, temp_min, temp_max, wind_speed, pressure, humidity):
