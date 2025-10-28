@@ -43,7 +43,7 @@ def insert_weather_condition(weather_id, climate, description, cloud):
 ist = pytz.timezone('Asia/Kolkata')
 
 def insert_weather_record(city_id, weather_id, city_name, temp, feels_like, temp_min, temp_max, wind_speed, pressure, humidity):
-    supabase.table("weather_data").upsert({
+    supabase.table("weather_data").insert({
         "record_time": datetime.datetime.now(ist).strftime('%H:%M'),
         "date": datetime.date.today().isoformat(),           
        "city_id": city_id,
